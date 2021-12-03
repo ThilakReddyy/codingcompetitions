@@ -1,48 +1,33 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-void solve(int test)
-{
-    int N, K, p;
-    string S;
-    cin >> N >> K;
-    cin >> S;
-    int score = 0;
-    if (N % 2 == 0)
-    {
-        p = N / 2;
-    }
-    else
-    {
-        p = N / 2 + 1;
-    }
-    for (int j = 0; j < p; j++)
-    {
-        if (S[j] != S[N - j - 1])
-        {
-            score = score + 1;
-        }
-    }
 
-    if (score < K)
-    {
-        score = K - score;
-    }
-    else if (score == K)
-    {
-        score = 0;
-    }
-    if (score > K)
-    {
-        score = score - K;
-    }
-    cout << "Case #" << test << ": " << score << endl;
+void solve()
+{
+	long long int q,r;
+	cin>>q>>r;
+	string s;
+	cin>>s;
+	int goodness=0;
+	for(int i=0;i<q/2;i++)
+	{
+		if(s[i]!=s[q-i-1])
+		{
+			goodness=goodness+1;
+		}
+	}
+	cout<<abs(r-goodness);
+
 }
 int main()
 {
-    int t;
-    cin >> t;
-    for (int test = 1; test <= t; test++)
-    {
-        solve(test);
-    }
+	std::ios_base::sync_with_stdio(false);
+	int n;
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		cout<<"Case #"<<i<<": ";
+		solve();
+		cout<<endl;
+	}
+	
 }
